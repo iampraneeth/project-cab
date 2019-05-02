@@ -17,15 +17,16 @@ public class DriverController {
 
 	@RequestMapping("/signupdriver")
 	public void signUpDetailsOfDetails() {
-		Driver driver =new Driver("mrunal",898989898,"mrunal@gmail.com","1221997","ABC123","MH02-2121","GOOD","GOOD",101,"password");
+		Driver driver = new Driver("mrunal", 898989898, "mrunal@gmail.com", "1221997", "ABC123", "MH02-2121", "GOOD",
+				"GOOD", 101, "password");
 		service.addDetailsOfDriver(driver);
 	}
-
-	/*
-	 * @RequestMapping("/displaydriver") public Driver showDetailsOfDriver() {
-	 * Driver driver =dao.findById((long) 898989898).get(); return null;
-	 * 
-	 * 
-	 * }
-	 */
+	@RequestMapping("/logindriver")
+	public String loginDriver() {
+		
+		return null;
+		
+		
+	}
+	
 }

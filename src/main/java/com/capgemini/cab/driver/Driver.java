@@ -5,7 +5,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Driver {
-	
+
 	@Id
 	private long number;
 	private String name;
