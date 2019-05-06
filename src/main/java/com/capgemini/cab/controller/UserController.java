@@ -1,8 +1,12 @@
 package com.capgemini.cab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capgemini.cab.dao.UserDao;
@@ -12,18 +16,23 @@ import com.capgemini.cab.service.UserService;
 import com.capgemini.cab.user.User;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+
 public class UserController {
 	@Autowired
 	private UserDao dao;
 	@Autowired
 	private UserService service;
+	
 
-	@RequestMapping("/signupuser")
-	public void signUpDetailsOfUser(@RequestParam("name") String name, @RequestParam("password") String password,
-			@RequestParam("mobileNumber") long mobileNumber, @RequestParam("email") String email) {
+	@PostMapping("/signUp")
+	public ResponseEntity<User> signUpDetailsOfUser(@RequestBody User user) {
 		// User user = new User("Ram", "password", 1234567891, "ram@gmail.com");
-		User user = new User(name, password, mobileNumber, email);
-		service.addDetails(user);
+		// User user = new User(name, password, mobileNumber, email);
+		User u = service.addDetails(user);
+		System.out.println(user);
+
+		return new ResponseEntity<User>(u, HttpStatus.CREATED);
 
 	}
 
@@ -32,11 +41,11 @@ public class UserController {
 										 * @RequestParam("email") String email, @RequestParam("password") String
 										 * password
 										 */) {
-		long no=123456781;
+		long no = 123456781;
 		String email = "ram1@gmail.com";
 		String password = "password";
 		User user = dao.findById("Ram").get();
-		//Long number = Long.parseLong(email);
+		// Long number = Long.parseLong(email);
 
 		if ((user.getEmail().equals(email) || user.getNumber() == no) && user.getPassword().equals(password)) {
 			return "yes";

@@ -15,9 +15,11 @@ public class UserServiceImpl implements UserService{
 	
 
 	@Override
-	public void addDetails(User user) {
-		udao.save(user);
+	public User addDetails(User user) {
+		return udao.save(user);
 		
 	}
 
+
+	
 }

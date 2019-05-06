@@ -24,7 +24,7 @@ public class GFG {
 
 		double r = 6371;
 
-		int distance = (int) (c * r+10);
+		int distance = (int) (c * r + 10);
 
 		return distance;
 	}
