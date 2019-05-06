@@ -29,8 +29,9 @@ public class UserController {
 	public ResponseEntity<User> signUpDetailsOfUser(@RequestBody User user) {
 		// User user = new User("Ram", "password", 1234567891, "ram@gmail.com");
 		// User user = new User(name, password, mobileNumber, email);
-		User u = service.addDetails(user);
 		System.out.println(user);
+		User u = service.addDetails(user);
+		System.out.println(u);
 
 		return new ResponseEntity<User>(u, HttpStatus.CREATED);
 
@@ -44,7 +45,7 @@ public class UserController {
 		long no = 123456781;
 		String email = "ram1@gmail.com";
 		String password = "password";
-		User user = dao.findById("Ram").get();
+		User user = dao.findById(1L).get();
 		// Long number = Long.parseLong(email);
 
 		if ((user.getEmail().equals(email) || user.getNumber() == no) && user.getPassword().equals(password)) {

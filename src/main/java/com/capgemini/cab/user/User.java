@@ -1,5 +1,6 @@
 package com.capgemini.cab.user;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,8 +10,11 @@ import javax.persistence.Id;
 public class User {
 
 	@Id
-	//@Column(name="username")
-	 @GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "U_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long U_id;
+	// @Column(name="username")
+	// @GeneratedValue(strategy = GenerationType.AUTO)
 	private String username;
 	private String password;
 	private long number;
@@ -27,6 +31,14 @@ public class User {
 		this.password = password;
 		this.number = number;
 		this.email = email;
+	}
+
+	public Long getU_id() {
+		return U_id;
+	}
+
+	public void setU_id(Long u_id) {
+		U_id = u_id;
 	}
 
 	public String getUserName() {
