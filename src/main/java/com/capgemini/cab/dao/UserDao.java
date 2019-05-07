@@ -8,4 +8,5 @@ import com.capgemini.cab.user.User;
 @Repository
 public interface UserDao extends JpaRepository<User, Long>{
 
+	User findByEmail(String email);
 }

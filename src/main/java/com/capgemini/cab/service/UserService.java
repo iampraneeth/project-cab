@@ -7,6 +7,7 @@ import com.capgemini.cab.user.User;
 @Service
 public interface UserService {
 	public User addDetails(User user);
+	public User findByEmail(String email);
 
 	
 	
